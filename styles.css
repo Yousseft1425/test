@@ -1,75 +1,70 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
 }
 
 .chat-container {
-    background-color: #fff;
-    border-radius: 10px;
-    width: 400px;
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     display: flex;
     flex-direction: column;
     height: 500px;
-}
-
-.chat-header {
-    background-color: #4caf50;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    border-radius: 10px 10px 0 0;
+    justify-content: space-between;
 }
 
 .chat-box {
     flex-grow: 1;
-    padding: 20px;
     overflow-y: auto;
-    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
 }
 
-.chat-log {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.message {
+    margin: 10px;
+    padding: 12px;
+    border-radius: 12px;
+    max-width: 70%;
+    line-height: 1.5;
 }
 
-.chat-input-container {
-    display: flex;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 0 0 10px 10px;
+.bot-message {
+    background-color: #e2e2e2;
+    margin-left: auto;
 }
 
-#user-input {
-    width: 80%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-#send-btn {
-    width: 15%;
-    background-color: #4caf50;
+.user-message {
+    background-color: #007bff;
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-left: 10px;
+    margin-right: auto;
 }
 
-#send-btn:hover {
-    background-color: #45a049;
+input[type="text"] {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-right: 10px;
+    flex-grow: 1;
+}
+
+button {
+    padding: 12px 16px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
 }
