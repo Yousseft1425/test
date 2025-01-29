@@ -26,11 +26,11 @@ function sendMessage(event) {
         const botMessageElement = document.createElement("div");
         botMessageElement.classList.add("message", "bot-message");
         
-        if (userMessage.toLowerCase() === "hello") {
+        if (userMessage.toLowerCase().includes("hello")) {
             botMessageElement.textContent = "Hi there! How are you?";
-        } else if (userMessage.toLowerCase() === "how are you?") {
+        } else if (userMessage.toLowerCase().includes("how are you?")) {
             botMessageElement.textContent = "I'm just a bot, but I'm doing great!";
-        } else if (userMessage.toLowerCase() === "bye") {
+        } else if (userMessage.toLowerCase().includes("bye")) {
             botMessageElement.textContent = "Goodbye! Have a nice day!";
         } else {
             botMessageElement.textContent = "Sorry, I didn't understand that.";
