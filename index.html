@@ -11,15 +11,15 @@
         <h1>Welcome to OpenAI Interface</h1>
         <p>Interact with OpenAI through this interface.</p>
 
-        <form action="/process" method="POST">
-            <textarea name="userInput" placeholder="Ask me anything..." required></textarea>
-            <button type="submit">Submit</button>
-        </form>
+        <textarea id="userInput" placeholder="Ask me anything..." required></textarea>
+        <button id="submitButton">Submit</button>
 
         <div class="response">
             <h2>AI Response:</h2>
             <p id="aiResponse">Your response will appear here...</p>
         </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
