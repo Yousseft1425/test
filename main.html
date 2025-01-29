@@ -4,65 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Simulation</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .chat-container {
-            width: 400px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-        .chat-box {
-            height: 300px;
-            overflow-y: auto;
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-        .message {
-            padding: 8px 12px;
-            margin: 5px;
-            border-radius: 5px;
-            display: inline-block;
-            max-width: 80%;
-        }
-        .bot {
-            background-color: #e1f5fe;
-            align-self: flex-start;
-        }
-        .user {
-            background-color: #c8e6c9;
-            align-self: flex-end;
-            text-align: right;
-        }
-        .input-box {
-            display: flex;
-            padding: 10px;
-        }
-        input {
-            flex: 1;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            margin-left: 5px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -74,75 +16,6 @@
     </div>
 </div>
 
-<script>
-    const chatBox = document.getElementById("chat-box");
-    const userInput = document.getElementById("user-input");
-
-    const conversationFlow = [
-        { question: "Hey, this is a test! What is your name?", responses: [] },
-        { question: "How many apples do you have?", responses: {
-            "1 apple": "Ah, you have 1 apple!",
-            "2 apples": "Ah, you have 2 apples!"
-        }},
-        { question: "Where do you live?", responses: {
-            "Danmark": "Wow Danmark, that's a very flat land.",
-            "Palestine": "Wow Palestine is the holy land, where a genocide is happening!"
-        }}
-    ];
-
-    let currentStep = 0;
-    let userName = "";
-
-    function appendMessage(text, sender) {
-        const messageDiv = document.createElement("div");
-        messageDiv.classList.add("message", sender);
-        messageDiv.textContent = text;
-        chatBox.appendChild(messageDiv);
-        chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    function askNextQuestion() {
-        if (currentStep < conversationFlow.length) {
-            appendMessage(conversationFlow[currentStep].question, "bot");
-        }
-    }
-
-    function sendMessage() {
-        const userText = userInput.value.trim();
-        if (!userText) return;
-
-        appendMessage(userText, "user");
-        userInput.value = "";
-
-        if (currentStep === 0) {
-            userName = userText;
-            appendMessage(`Hello ${userName}!`, "bot");
-            currentStep++;
-            setTimeout(askNextQuestion, 1000);
-        } else if (currentStep < conversationFlow.length) {
-            const step = conversationFlow[currentStep];
-            let response = null;
-
-            for (const key in step.responses) {
-                if (userText.toLowerCase().includes(key.toLowerCase())) {
-                    response = step.responses[key];
-                    break;
-                }
-            }
-
-            if (response) {
-                appendMessage(response, "bot");
-                currentStep++;
-                setTimeout(askNextQuestion, 1000);
-            } else {
-                appendMessage("Sorry, I couldn't understand you. Can you rephrase it?", "bot");
-            }
-        }
-    }
-
-    // Start the conversation
-    setTimeout(askNextQuestion, 1000);
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
