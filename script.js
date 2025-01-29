@@ -1,5 +1,7 @@
+// This function is used to send the message when the user presses Enter or clicks the Send button.
 function sendMessage(event) {
-    if (event && event.key !== "Enter") return;
+    // Only proceed if the key pressed is Enter or if the Send button was clicked
+    if (event && event.key !== "Enter" && event.type !== 'click') return;
     
     const userInput = document.getElementById("user-input");
     const userMessage = userInput.value.trim();
@@ -19,7 +21,7 @@ function sendMessage(event) {
     // Scroll to the bottom of the chat box
     chatBox.scrollTop = chatBox.scrollHeight;
     
-    // Simulate a bot response
+    // Simulate a bot response after a short delay
     setTimeout(() => {
         const botMessageElement = document.createElement("div");
         botMessageElement.classList.add("message", "bot-message");
