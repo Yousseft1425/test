@@ -1,36 +1,35 @@
-document.getElementById("submitButton").addEventListener("click", async function() {
-    const userInput = document.getElementById("userInput").value;
-    const aiResponseElement = document.getElementById("aiResponse");
+// Function to add a new message to the chat log
+function addMessageToChat(message, sender) {
+    const chatLog = document.getElementById("chat-log");
+    const newMessage = document.createElement("div");
+    newMessage.classList.add(sender);
+    newMessage.innerText = message;
+    chatLog.appendChild(newMessage);
+    chatLog.scrollTop = chatLog.scrollHeight; // Scroll to the latest message
+}
 
-    // Basic validation to check if the user input is empty
-    if (!userInput.trim()) {
-        aiResponseElement.textContent = "Please enter a question.";
-        return;
+// Simulate a response from ChatGPT
+function getChatGPTResponse(userMessage) {
+    // Simple mock response for demonstration purposes
+    return "ChatGPT: You said, '" + userMessage + "'.";
+}
+
+// Handle message sending when the user clicks "Send"
+document.getElementById("send-btn").addEventListener("click", function() {
+    const userInput = document.getElementById("user-input").value.trim();
+    if (userInput) {
+        addMessageToChat(userInput, "user-message");
+        const botResponse = getChatGPTResponse(userInput);
+        setTimeout(function() {
+            addMessageToChat(botResponse, "chatgpt-message");
+        }, 1000); // Simulate a delay for ChatGPT response
+        document.getElementById("user-input").value = ""; // Clear the input field
     }
+});
 
-    aiResponseElement.textContent = "Loading...";  // Placeholder for loading
-
-    // OpenAI API endpoint (this needs to be implemented via a server or serverless function)
-    const apiEndpoint = "https://api.openai.com/v1/completions"; // Or use any available API endpoint
-    const apiKey = "YOUR_OPENAI_API_KEY";  // You'll need to replace this with your OpenAI API key
-
-    try {
-        const response = await fetch(apiEndpoint, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${apiKey}`
-            },
-            body: JSON.stringify({
-                model: "text-davinci-003",  // Example model, replace with the latest model you want
-                prompt: userInput,
-                max_tokens: 150
-            })
-        });
-
-        const data = await response.json();
-        aiResponseElement.textContent = data.choices[0].text.trim();
-    } catch (error) {
-        aiResponseElement.textContent = "Error fetching AI response.";
+// Allow the user to press Enter to send a message
+document.getElementById("user-input").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        document.getElementById("send-btn").click();
     }
 });
