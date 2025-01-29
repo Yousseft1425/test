@@ -25,15 +25,25 @@ function sendMessage(event) {
     setTimeout(() => {
         const botMessageElement = document.createElement("div");
         botMessageElement.classList.add("message", "bot-message");
-        
-        if (userMessage.toLowerCase().includes("hello")) {
-            botMessageElement.textContent = "Hi there! How are you?";
-        } else if (userMessage.toLowerCase().includes("how are you?")) {
+
+        // Normalize the message to lowercase
+        const lowerCaseMessage = userMessage.toLowerCase();
+
+        // Keywords and responses
+        if (lowerCaseMessage.includes("hello") || lowerCaseMessage.includes("hi")) {
+            botMessageElement.textContent = "Hi there! How can I help you today?";
+        } else if (lowerCaseMessage.includes("how") && lowerCaseMessage.includes("are you")) {
             botMessageElement.textContent = "I'm just a bot, but I'm doing great!";
-        } else if (userMessage.toLowerCase().includes("bye")) {
-            botMessageElement.textContent = "Goodbye! Have a nice day!";
+        } else if (lowerCaseMessage.includes("bye") || lowerCaseMessage.includes("goodbye")) {
+            botMessageElement.textContent = "Goodbye! Have a great day!";
+        } else if (lowerCaseMessage.includes("thanks") || lowerCaseMessage.includes("thank you")) {
+            botMessageElement.textContent = "You're welcome!";
+        } else if (lowerCaseMessage.includes("name")) {
+            botMessageElement.textContent = "I’m a friendly chatbot here to help you!";
+        } else if (lowerCaseMessage.includes("what") && lowerCaseMessage.includes("time")) {
+            botMessageElement.textContent = `The time is: ${new Date().toLocaleTimeString()}`;
         } else {
-            botMessageElement.textContent = "Sorry, I didn't understand that.";
+            botMessageElement.textContent = "Sorry, I didn't quite catch that. Could you rephrase?";
         }
         
         chatBox.appendChild(botMessageElement);
