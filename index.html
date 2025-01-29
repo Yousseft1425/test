@@ -3,16 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Page</title>
+    <title>OpenAI Interface</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to My GitHub Page</h1>
-        <p>This is a simple webpage served with Java.</p>
-        <form action="HelloServlet" method="post">
-            <button type="submit">Click Me</button>
+        <h1>Welcome to OpenAI Interface</h1>
+        <p>Interact with OpenAI through this interface.</p>
+
+        <form action="/process" method="POST">
+            <textarea name="userInput" placeholder="Ask me anything..." required></textarea>
+            <button type="submit">Submit</button>
         </form>
+
+        <div class="response">
+            <h2>AI Response:</h2>
+            <p id="aiResponse">Your response will appear here...</p>
+        </div>
     </div>
 </body>
 </html>
