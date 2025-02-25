@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <script src="Diverse/loadLayout.js" defer></script>
+    <style>
+      .content-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      .slider-container {
+        width: 60%;
+        max-width: 800px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .slider {
+        display: flex;
+        width: 400%;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .slide {
+        min-width: 100%;
+        flex: 0 0 100%;
+        cursor: pointer;
+      }
+
+      .slide img {
+        width: 730px;
+        height: 300px;
+      }
+
+      .prev,
+      .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      .prev {
+        left: 10px;
+      }
+      .next {
+        right: 10px;
+      }
+
+      .side-content {
+        width: 35%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .recent-posts,
+      .latest-news {
+        background: #f4f4f4;
+        padding: 15px;
+        border-radius: 5px;
+      }
+
+      .recent-posts h2,
+      .latest-news h2 {
+        margin-top: 0;
+      }
+
+      /* Style changes for the title of Seneste Analyser */
+      .recent-posts h2 {
+        background-color: #294048; /* Blue background */
+        color: white; /* White text */
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      /* Adding spacing and border to the Seneste Nyheder list */
+      .latest-news h2 {
+        background-color: #294048; /* Blue background */
+        color: white; /* White text */
+        padding: 10px;
+        border-radius: 5px;
+        margin: 0;
+      }
+
+      .latest-news .news-gallery {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .news-row {
+        display: flex;
+        gap: 15px;
+        justify-content: space-between;
+      }
+
+      .news-item {
+        width: 100%;
+        background: #eaeaea;
+        padding: 15px;
+        border-radius: 5px;
+        text-align: center;
+        border: 1px solid #ddd; /* Border around each news item */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+      }
+
+      /* Hover effect for news items */
+      .news-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .news-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+      }
+
+      /* Make news items clickable */
+      .news-item a {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .news-item p {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .recent-posts ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .recent-posts li {
+        margin-bottom: 13px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+      }
+
+      .recent-posts li:last-child {
+        border-bottom: none;
+      }
+
+      .recent-posts a {
+        text-decoration: none;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header"></div>
+
+    <div class="content-wrapper">
+      <div class="slider-container">
+        <div class="slider">
+          <div class="slide" onclick="location.href='#slide1'">
+            <h2>Hvem er du? Islamisk identitet i en udfordrende tid</h2>
+            <img src="Medie/image.jpg" />
+          </div>
+          <div class="slide" onclick="location.href='#slide2'">
+            <h2>
+              Delegation til Bangladesh Indonesiens og Pakistans ambassader
+              vedr. situationen i Myanmar
+            </h2>
+            <img src="Medie/image (1).jpg" />
+          </div>
+          <div class="slide" onclick="location.href='#slide3'">
+            <h2>
+              Afsluttende bemærkning af Elias Lamrabet under retsmødet i
+              Københavns Byret d. 25. juni 2024
+            </h2>
+            <img src="Artikler/image.jpg" />
+          </div>
+          <div class="slide" onclick="location.href='#slide4'">
+            <h2>Koranen forudser Palæstinas befrielse</h2>
+            <img src="Artikler/analyse.jpg" />
+          </div>
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+      </div>
+
+      <div class="side-content">
+        <div class="recent-posts">
+          <h2>Seneste analyser</h2>
+          <ul>
+            <li>
+              <a href="#">Koranen forudser Palæstinas befrielse</a>
+            </li>
+            <li>
+              <a href="#"
+                >Tilbagevisning af påstanden om, at Allah ikke er Lovgiveren</a
+              >
+            </li>
+            <li>
+              <a href="#">Portræt af Sheikh Ata Abu al-Rashta</a>
+            </li>
+            <li><a href="#">Koranen forudser Palæstinas befrielse</a></li>
+            <li><a href="#">Bandekriminalitet blandt unge muslimer</a></li>
+            <li><a href="#">Danske medier udviser islamhad</a></li>
+            <li><a href="#">Tossen og terroristen</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="latest-news">
+      <h2>Seneste nyheder</h2>
+      <div class="news-gallery">
+        <div class="news-row">
+          <div class="news-item">
+            <a href="#">
+              <img src="Medie/image.jpg" style="width: 250px; height: 175px" />
+              <p>Hvem er du? Islamisk identitet i en udfordrende tid</p>
+            </a>
+          </div>
+          <div class="news-item">
+            <a href="#">
+              <img
+                src="Medie/image (1).jpg"
+                style="width: 250px; height: 175px"
+              />
+              <p>
+                Delegation til Bangladesh Indonesiens og Pakistans ambassader
+                vedr. situationen i Myanmar
+              </p>
+            </a>
+          </div>
+          <div class="news-item">
+            <a href="#">
+              <img
+                src="Artikler/image.jpg"
+                style="width: 250px; height: 175px"
+              />
+              <p>
+                Afsluttende bemærkning af Elias Lamrabet under retsmødet i
+                Københavns Byret d. 25. juni 2024
+              </p>
+            </a>
+          </div>
+        </div>
+        <div class="news-row">
+          <div class="news-item">
+            <a href="#">
+              <img
+                src="Artikler/analyse.jpg"
+                style="width: 250px; height: 175px"
+              />
+              <p>Koranen forudser Palæstinas befrielse</p>
+            </a>
+          </div>
+          <div class="news-item">
+            <a href="#">
+              <img src="Diverse/TEST.png" style="width: 250px; height: 175px" />
+              <p>TEST-TEST-TEST-TEST-TEST-TEST-TEST</p>
+            </a>
+          </div>
+          <div class="news-item">
+            <a href="#">
+              <img src="Diverse/TEST.png" style="width: 250px; height: 175px" />
+              <p>TEST-TEST-TEST-TEST-TEST-TEST-TEST</p>
+            </a>
+          </div>
+        </div>
+        <div class="news-row">
+          <div class="news-item">
+            <a href="#">
+              <img src="Diverse/TEST.png" style="width: 250px; height: 175px" />
+              <p>TEST-TEST-TEST-TEST-TEST-TEST-TEST</p>
+            </a>
+          </div>
+          <div class="news-item">
+            <a href="#">
+              <img src="Diverse/TEST.png" style="width: 250px; height: 175px" />
+              <p>TEST-TEST-TEST-TEST-TEST-TEST-TEST</p>
+            </a>
+          </div>
+          <div class="news-item">
+            <a href="#">
+              <img src="Diverse/TEST.png" style="width: 250px; height: 175px" />
+              <p>TEST-TEST-TEST-TEST-TEST-TEST-TEST</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let currentIndex = 0;
+      const slides = document.querySelectorAll(".slide");
+      const totalSlides = slides.length;
+
+      function moveSlide(step) {
+        currentIndex = (currentIndex + step + totalSlides) % totalSlides;
+        document.querySelector(".slider").style.transform = `translateX(-${
+          currentIndex * 100
+        }%)`;
+      }
+
+      setInterval(() => moveSlide(1), 5000);
+    </script>
+
+    <div id="footer"></div>
+  </body>
+</html>
